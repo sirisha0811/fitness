@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -16,21 +15,75 @@ public class Appointment {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@NotBlank
+	@NotNull
+	@Pattern(regexp ="^[a-zA-Z\s]+$")
 	private String name;
+	
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "[0-9 ]+")
 	private Integer age;
+	
+	@Email
+	@NotNull
+	@NotBlank
+	@Size(max = 30)
 	private String email;
+	
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "[0-9 ]+")
+	@Size(max = 12)
 	private String mobileNo;
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 50)
 	private String addressLine1 ;
+	
+	@Size(max = 50)
 	private String addressLine2 ;
+	
+	@NotBlank
+	@NotNull
+	@Size(max = 25)
+	@Pattern(regexp ="^[a-zA-Z\s]+$")
 	private String city ;
+	
+	@NotBlank
+	@NotNull
+	@Size(max = 25)
+	@Pattern(regexp ="^[a-zA-Z\s]+$")
 	private String state;
+	
+	@NotBlank
+	@NotNull
+	@Pattern(regexp ="^[a-zA-Z\s]+$")
 	private String country ;
+	
+	@NotBlank
+	@NotNull
+	@Pattern(regexp = "[0-9 ]+")
+	@Size(max = 7)
 	private Integer pincode;
+	
+	@Pattern(regexp = "^(?:male|female)$")
 	private String trainerPreference;
+	
+	@Pattern(regexp = "^(?:Yes|No)$")
 	private String physiotherapistrequirement;
+	
+	@Pattern(regexp = "^(?:yes|no)$")
 	private String selectpackage ;
+	
+	@Pattern(regexp = "[0-9 ]+")
 	private Integer weeks;
+	
+	@Pattern(regexp = "[0-9 ]+")
 	private Integer amount;
+	
 	public Integer getId() {
 		return id;
 	}
